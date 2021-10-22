@@ -1,0 +1,6 @@
+This folder contains the code for the Thrust Vector Control (TVC) Mount.
+Contents:
+    1. PID controller
+        a) Determines servo position based on Inertial Measurement 
+            Unit (IMU) orientation
+
