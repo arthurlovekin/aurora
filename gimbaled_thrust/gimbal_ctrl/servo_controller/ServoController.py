@@ -18,7 +18,8 @@ class ServoController(object):
         self,
         pin=11,
         hertz=50,
-        initAngle=0
+        initAngle=0,
+        gimbalFunction=None
     ):
         self.pin = pin
         self.hertz = hertz
@@ -28,10 +29,11 @@ class ServoController(object):
         self.servo = GPIO.PWM(self.pin, self.hertz)
         self.servo.start(0)
         
-        self.angle = 180
+        self.angle = 0
         self.setAngle(self, initAngle)
 
     def setAngle(self, angle):
+        angle = self.gimbalFunction(angle)
         # if in angle change progress
         currentTime = _current_time()
         if(self.angle != self.toAngle):
